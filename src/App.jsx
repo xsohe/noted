@@ -3,6 +3,9 @@ import Todo from './components/Todo';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import TextInfo from './components/TextInfo';
+import Logo from './components/Logo';
+import UserAvatar from './components/UserAvatar';
+import Form from './components/Form';
 
 const LOCAL_STORAGE_KEY = 'react-app-todos';
 
@@ -34,10 +37,15 @@ export default function App() {
 
   return (
     <div className="flex flex-col bg-gray-50 h-full md:h-screen">
-      <Navbar />
+      <Navbar>
+        <Logo />
+        <UserAvatar />
+      </Navbar>
       <div className="flex flex-col md:flex-row flex-1">
         <Hero />
-        <Todo todos={todos} onAddTodo={handleAddTodo} onDeleteTodo={handleDeleteTodo} onToggleTodo={handleToggleTodo} onClearAllTodo={handleClearAllTodo} />
+        <Todo todos={todos} onDeleteTodo={handleDeleteTodo} on onToggleTodo={handleToggleTodo} onClearAllTodo={handleClearAllTodo}>
+          <Form onAddTodo={handleAddTodo} />
+        </Todo>
       </div>
 
       <TextInfo todos={todos} />
