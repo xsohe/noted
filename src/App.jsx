@@ -1,28 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Todo from './components/Todo';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import TextInfo from './components/TextInfo';
 
-const dataTodos = [
-  {
-    id: 1,
-    body: 'Turu',
-    checked: true,
-  },
-  {
-    id: 2,
-    body: 'Netflix & Chill',
-    checked: false,
-  },
-  {
-    id: 3,
-    body: 'Learn Something New',
-    checked: false,
-  },
-];
+const LOCAL_STORAGE_KEY = 'react-app-todos';
+
 export default function App() {
-  const [todos, setTodos] = useState(dataTodos);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
   function handleAddTodo(todo) {
     setTodos([...todos, todo]);
