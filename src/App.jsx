@@ -41,7 +41,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col bg-gray-100 h-full md:h-screen">
+    <div className="flex flex-col bg-gray-50 h-full md:h-screen">
       <Navbar />
       <div className="flex flex-col md:flex-row flex-1">
         <Hero />

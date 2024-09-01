@@ -6,20 +6,19 @@ export default function Todo({ todos, onAddTodo, onDeleteTodo, onToggleTodo, onC
   const [filterBy, setFilterBy] = useState('all');
   let filterTodo;
 
-  if (filterBy === 'all') {
-    filterTodo = todos;
-  }
-
-  if (filterBy === 'alfabet') {
-    filterTodo = todos.slice().sort((a, b) => a.body.localeCompare(b.body));
-  }
-
-  if (filterBy === 'completed') {
-    filterTodo = todos.slice().sort((a, b) => b.checked - a.checked);
-  }
-
-  if (filterBy === 'incomplete') {
-    filterTodo = todos.slice().sort((a, b) => a.checked - b.checked);
+  switch (filterBy) {
+    case 'completed':
+      filterTodo = todos.slice().sort((a, b) => b.checked - a.checked);
+      break;
+    case 'incomplete':
+      filterTodo = todos.slice().sort((a, b) => a.checked - b.checked);
+      break;
+    case 'alfabet':
+      filterTodo = todos.slice().sort((a, b) => a.body.localeCompare(b.body));
+      break;
+    default:
+      filterTodo = todos;
+      break;
   }
 
   return (

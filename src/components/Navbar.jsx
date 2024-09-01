@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <nav className="w-full bg-gray-100 py-6 px-10">
+    <nav className="w-full bg-gray-50 py-6 px-10">
       <div className="container mx-auto flex justify-between">
         <div className="flex">
           <img src="img/logo.png" alt="Logo" className="h-8 w-8 mr-3" />
